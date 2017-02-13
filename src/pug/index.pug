@@ -1,0 +1,46 @@
+extends layout
+block css
+  link(rel='stylesheet', href='./styles/main.css')
+block content
+  #app(v-cloak)
+    #location
+      h1 {{ city }}
+      h2 {{ timeNow }}
+    .container.row
+      .col-xs-6
+        #info
+          #weather
+            img(v-bind:src='iconUrl')
+            p {{ weather }}
+          #temp
+            p#maxmin
+              span
+                i.fa.fa-arrow-up(aria-hidden='true')
+                | {{ tempMax }} ℃
+              span
+                i.fa.fa-arrow-down(aria-hidden='true')
+                | {{ tempMin }} ℃
+            #now
+              p#nowtemp
+                | {{ tempNow }} ℃
+      .col-xs-6
+        table
+          tr
+            td
+              p 濕度
+            td
+              p {{ humi }}
+          tr
+            td
+              p PM2.5
+            td
+              p {{ pm25 }} μg/m
+                sup 3
+          tr
+            td
+              p 空氣品質
+            td
+              p {{ airQuality }}
+
+block js
+  script(type='text/javascript', src='./js/main.js')
